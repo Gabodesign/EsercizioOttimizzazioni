@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 99c9720ab356a0642a771bea13969a05
+  m_OcclusionCullingData: {fileID: 36300000, guid: 6c1bd5bbad0c6a9468c9a12b8df2502d,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -24313,8 +24314,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3985961861319848656}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.99980533, z: -0, w: -0.019729737}
-  m_LocalPosition: {x: 0.8, y: -0.000002861023, z: -14}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 5.2, y: -0.000002861023, z: 9.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24323,7 +24324,7 @@ Transform:
   - {fileID: 7648685126521055519}
   - {fileID: 6190371273560269384}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 182.261, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &5492921791643592480
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24478,7 +24479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390185090278351055}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7004011, y: -0.09715113, z: -0.09715113, w: -0.7004011}
+  m_LocalRotation: {x: 0.70570594, y: 0.044488072, z: 0.044488072, w: -0.70570594}
   m_LocalPosition: {x: -0.0135196205, y: -3.609557e-16, z: -1.262137}
   m_LocalScale: {x: 6.4516, y: 6.4516, z: 6.4516}
   m_ConstrainProportionsScale: 0
@@ -24487,7 +24488,7 @@ Transform:
   - {fileID: 330585546}
   - {fileID: 1268596071}
   m_Father: {fileID: 4331103421475661930}
-  m_LocalEulerAnglesHint: {x: -90, y: 226.2, z: 149.594}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: -547.214}
 --- !u!33 &6343165449167384113
 MeshFilter:
   m_ObjectHideFlags: 0
