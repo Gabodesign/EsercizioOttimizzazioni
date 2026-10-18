@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
+
     public GameObject prefab;
     public int dimensioneIniziale = 20;
-
     List<GameObject> pool = new List<GameObject>();
 
     void Awake()
