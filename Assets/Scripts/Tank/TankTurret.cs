@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TankTurret : MonoBehaviour
 {
@@ -12,15 +13,19 @@ public class TankTurret : MonoBehaviour
     public float velocitaCannone = 40f;
     public float angoloMin = -10f;
     public float angoloMax = 30f;
+    public Image cursor;
+
 
     Vector2 look;
     float elevate;
-    float yaw;
-    float pitch;
+    float rotazioneTorretta;
+    float inclinazioneTorretta;
+    Quaternion rotazioneBaseTorre;
 
     void Start()
     {
-        yaw = torre.localEulerAngles.y;
+        // salvo l'orientamento originale del modello 
+        rotazioneBaseTorre = torre.localRotation;
     }
 
     void OnEnable()
@@ -43,13 +48,16 @@ public class TankTurret : MonoBehaviour
     {
         if (Time.timeScale == 0f) return;
 
-        // torre: mouse in orizzontale
-        yaw += look.x * sensibilitaMouse;
-        torre.localRotation = Quaternion.Euler(0f, yaw, 0f);
+        // torre: ruota attorno all'asse Z locale (verticale), mantenendo l'inclinazione del modello
+        rotazioneTorretta += look.x * sensibilitaMouse;
+        torre.localRotation = rotazioneBaseTorre * Quaternion.Euler(0f, 0f, rotazioneTorretta);
 
         // cannone: W alza, S abbassa
-        pitch += elevate * velocitaCannone * Time.deltaTime;
-        pitch = Mathf.Clamp(pitch, angoloMin, angoloMax);
-        cannone.localRotation = Quaternion.Euler(-pitch, 0f, 0f);
+        inclinazioneTorretta += elevate * velocitaCannone * Time.deltaTime;
+        inclinazioneTorretta = Mathf.Clamp(inclinazioneTorretta, angoloMin, angoloMax);
+        cannone.localRotation = Quaternion.Euler(-inclinazioneTorretta, 0f, 0f);
+
+        if (cursor != null)
+            cursor.rectTransform.anchoredPosition = new Vector2(0f, -inclinazioneTorretta);
     }
 }

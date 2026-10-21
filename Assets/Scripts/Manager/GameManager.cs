@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject pannelloFine;
     public TextMeshProUGUI testoFine;
 
-    int punti = 0;
+    private int punti = 0;
 
     void Awake()
     {

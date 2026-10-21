@@ -6,29 +6,29 @@ public class Bullet : MonoBehaviour
     public int danno = 10;
     public float durata = 3f;
 
-    void OnEnable()
+    private void OnEnable()
     {
         CancelInvoke();
         Invoke(nameof(Disattiva), durata);   // dopo X secondi torna nel pool
     }
 
-    void Update()
+    private void Update()
     {
         transform.Translate(Vector3.forward * velocita * Time.deltaTime);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.isTrigger) return;
         if (other.GetComponentInParent<TankMover>() != null) return;   // ignora il carro
 
-        Target t = other.GetComponentInParent<Target>();
-        if (t != null) t.TakeDamage(danno);
+        Target target = other.GetComponentInParent<Target>();
+        if (target != null) target.TakeDamage(danno);
 
         Disattiva();
     }
 
-    void Disattiva()
+    private void Disattiva()
     {
         gameObject.SetActive(false);
     }

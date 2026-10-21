@@ -18,6 +18,10 @@ public class TankMover : MonoBehaviour
     void Start()
     {
         puntoA = transform.position;
+
+        // avvia il loop del motore (una sola volta, non un PlayOneShot per frame)
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.AvviaMotore();
     }
 
     void Update()
@@ -38,6 +42,7 @@ public class TankMover : MonoBehaviour
             else
             {
                 finito = true;                        // tornato in A: fine gioco
+                if (AudioManager.Instance != null) AudioManager.Instance.FermaMotore();
                 GameManager.Instance.FineGioco();
             }
             return;
@@ -48,18 +53,15 @@ public class TankMover : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotazioneMeta, velocitaRotazione * Time.deltaTime);
 
         // avanza solo se è abbastanza allineato
+        bool inMovimento = false;
         if (Vector3.Angle(transform.forward, dir) < 10f)
         {
             transform.position += transform.forward * velocita * Time.deltaTime;
+            inMovimento = true;
         }
 
-        // resta appoggiato al terreno
-        if (seguiTerreno && Terrain.activeTerrain != null)
-        {
-            Terrain t = Terrain.activeTerrain;
-            Vector3 pos = transform.position;
-            pos.y = t.SampleHeight(pos) + t.transform.position.y + altezzaDalTerreno;
-            transform.position = pos;
-        }
+        // il motore resta in loop e cambia volume/pitch in base al movimento
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.AggiornaMotore(inMovimento ? 1f : 0f);
     }
 }
