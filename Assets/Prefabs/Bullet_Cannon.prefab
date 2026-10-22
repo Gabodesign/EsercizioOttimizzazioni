@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977fad6b488a9004ca5ab0fd5ef11491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocita: 40
-  danno: 20
+  velocita: 80
+  danno: 30
   durata: 30
 --- !u!136 &1790583775303924046
 CapsuleCollider:

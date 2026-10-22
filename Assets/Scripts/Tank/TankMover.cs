@@ -19,8 +19,9 @@ public class TankMover : MonoBehaviour
     {
         puntoA = transform.position;
 
-        // avvia il loop del motore (una sola volta, non un PlayOneShot per frame)
-        if (AudioManager.Instance != null)
+        // avvia il loop del motore solo se la partita è già iniziata
+        // (se c'è il menu iniziale, Time.timeScale è 0)
+        if (Time.timeScale > 0f && AudioManager.Instance != null)
             AudioManager.Instance.AvviaMotore();
     }
 
@@ -42,7 +43,6 @@ public class TankMover : MonoBehaviour
             else
             {
                 finito = true;                        // tornato in A: fine gioco
-                if (AudioManager.Instance != null) AudioManager.Instance.FermaMotore();
                 GameManager.Instance.FineGioco();
             }
             return;

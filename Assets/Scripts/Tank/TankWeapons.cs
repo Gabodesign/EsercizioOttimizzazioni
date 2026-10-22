@@ -56,7 +56,13 @@ public class TankWeapons : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (Time.timeScale == 0f)
+        {
+            // se il gioco è in pausa/menu, non tenere premuto lo sparo
+            // (evita che cliccando "Inizia partita" parte subito la mitragliatrice)
+            mitraPremuta = false;
+            return;
+        }
 
         // alternando le due canne della mitragliatrice a ogni colpo
         if (mitraPremuta && Time.time >= prossimoMitra)
